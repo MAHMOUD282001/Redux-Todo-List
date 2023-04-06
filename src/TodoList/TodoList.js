@@ -39,6 +39,7 @@ function TodoList() {
   let submitEditedItem = () => {
     dispatch(editTodoListItem({ id: editItemId, item: itemValue }));
     setEditMode(false);
+    setItemValue("");
   };
 
   let removeItem = (id) => {
@@ -96,9 +97,13 @@ function TodoList() {
         </div>
       )}
 
-      <button className="remove-all" onClick={removeAll}>
-        Remove All
-      </button>
+      {items?.length > 0 ? (
+        <button className="remove-all" onClick={removeAll}>
+          Remove All
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
